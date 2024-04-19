@@ -35,7 +35,7 @@
 
 - `구름 IDE`를 이용해 플라스크로 서버를 제작했어요.
 
-<img src="https://img.shields.io/badge/KAKAO TALK-FEE500?style=for-the-badge&logo=기술스택아이콘&logoColor=white">
+<img src="https://img.shields.io/badge/KAKAO TALK-FEE500?style=for-the-badge&logoColor=white">
 
 - `카카오 비즈니스 센터`에서 채널을 개설했어요.
 - 카카오 채널을 개설하고 `스킬`을 이용해 챗봇을 서버와 연동시켰어요.
