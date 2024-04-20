@@ -1,10 +1,10 @@
 import requests
 from bs4 import BeautifulSoup
-import datetime
+from datetime import datetime, timedelta
 import pytz
 
 kr_timezone = pytz.timezone('Asia/Seoul')
-now = datetime.datetime.now(kr_timezone)
+now = datetime.now(kr_timezone)
 print(now)
 weekday_num = now.weekday()
 today = str(now)
@@ -46,7 +46,7 @@ dorm_list = search_meal(dorm_url)
 medical_list = search_meal(medical_url)
 
 def get_meal(location):
-    if weekday_num == (5 or 6):
+    if weekday_num == (5 or 6) and location != 2:
         today_meal = "오늘은 주말! 평일에 봐요!"
     
     else:
@@ -67,6 +67,11 @@ def get_meal(location):
             index = 9
             meal_list = dorm_list
             today_meal += "오늘의 긱식\n\n"
+            if weekday_num == 5:
+                # index = 9
+                meal_list = [line.replace(' ', '') for line in meal_list]
+                joinline = meal_list[45] + " " + meal_list[47]
+                meal_list = meal_list[:45] + [joinline] + meal_list[48:]
         # medical
         elif location == 3:
             index = 5
@@ -106,8 +111,12 @@ def get_meal(location):
 
         today_meal += "행복한 하루 되세요 ^^"    
 
+    # print(menu_dict)
     return today_meal
+
 
 def get_all_meal():
     all_meal = get_meal(0) + "\n" + get_meal(1) + "\n" + get_meal(2) + "\n" + get_meal(3)
     return all_meal
+
+print(get_meal(2))
